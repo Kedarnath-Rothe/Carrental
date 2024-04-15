@@ -1213,3 +1213,37 @@ tr:hover {
     }  
   }
 }
+
+@media (prefers-color-scheme: light) {
+  /* Styles for light mode */
+  body {
+    background-color: #000;
+  }
+
+  label, p, h2, h1{
+    color: white;
+  } 
+
+  .additional-info h2 {
+    color: #000;
+  }
+
+  .delete button { 
+    color: rgb(0, 0, 0);
+  }
+
+  
+.section-car-book{  
+
+  .carname {
+    color: white; 
+  } 
+
+  input{
+    background-color: white; 
+    border-radius: 3rem;
+    border: 2px solid white; 
+  }
+} 
+}
+
