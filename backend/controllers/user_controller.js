@@ -60,7 +60,7 @@ const register = async (req, res) => {
             userId: userCreated._id,
             token: crypto.randomBytes(32).toString("hex"),
         }).save();
-        const url = `http://localhost:5173/${userCreated.id}/verify/${token.token}`;
+        const url = `https://rentmycar-kappa.vercel.app/${userCreated.id}/verify/${token.token}`;
         await sendEmail(userCreated.email, "Verify Email", url);
 
 
