@@ -14,7 +14,7 @@ const AdminContacts = () => {
 
   const getContactsData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/admin/contacts", {
+      const response = await fetch("https://carrental-khaki.vercel.app/api/admin/contacts", {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -39,7 +39,7 @@ const AdminContacts = () => {
 
   const deleteContactById = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/admin/contacts/delete/${id}`, {
+      const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/contacts/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: authorizationToken,

@@ -76,7 +76,7 @@ const Contact = () => {
             formData.append("message", contact.message);
             formData.append("aadhar_card", contact.aadhar_card); // Append the image file
 
-            const response = await fetch("http://localhost:8080/api/form/contact", {
+            const response = await fetch("https://carrental-khaki.vercel.app/api/form/contact", {
                 method: "POST",
                 headers: {
                     "X-Additional-Info": imgUrl // Custom header with additional info

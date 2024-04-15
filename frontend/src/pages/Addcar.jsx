@@ -100,7 +100,7 @@ const Addcar = () => {
             formData.append("details", car.details);
             formData.append("category", car.category); // Append category to formData
 
-            const response = await fetch('http://localhost:8080/api/data/addcar', {
+            const response = await fetch('https://carrental-khaki.vercel.app/api/data/addcar', {
                 method: "POST",
                 headers: {
                     "X-Additional-Info": imgUrl // Custom header with additional info

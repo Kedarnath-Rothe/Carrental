@@ -43,7 +43,7 @@ const UserUpdate = () => {
     useEffect(() => {
         const getSingleCarData = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/auth/bookcar/${params.id}`, {
+                const response = await fetch(`https://carrental-khaki.vercel.app/api/auth/bookcar/${params.id}`, {
                     method: "GET",
                     headers: {
                         Authorization: authorizationToken,
@@ -93,7 +93,7 @@ const UserUpdate = () => {
             const totalPrice = totalHours * parseInt(carData.price);
             const updatedCarData = { ...carData, total: totalPrice, booked: true, transaction_id : generateTransactionId() };
 
-            const response = await fetch(`http://localhost:8080/api/auth/bookcar/update/${params.id}`, {
+            const response = await fetch(`https://carrental-khaki.vercel.app/api/auth/bookcar/update/${params.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

@@ -11,7 +11,7 @@ const AdminCars = () => {
 
   const getAllCarsData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/admin/cars", {
+      const response = await fetch("https://carrental-khaki.vercel.app/api/admin/cars", {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -70,7 +70,7 @@ const AdminCars = () => {
 
   const deleteCar = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/admin/cars/delete/${id}`, {
+      const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/cars/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: authorizationToken,

@@ -21,7 +21,7 @@ const Managecar = () => {
 
     const deleteCar = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/admin/cars/delete/${id}`, {
+            const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/cars/delete/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: authorizationToken,

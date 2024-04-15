@@ -70,7 +70,7 @@ const Register = () => {
             formData.append("phone", user.phone);
             formData.append("password", user.password);
 
-            const response = await fetch('http://localhost:8080/api/auth/register', {
+            const response = await fetch('https://carrental-khaki.vercel.app/api/auth/register', {
                 method: "POST",
                 headers: {
                     "X-Additional-Info": imgUrl // Custom header with additional info

@@ -23,7 +23,7 @@ const AdminUpdate = () => {
     const navigate = useNavigate();
     const getSingleUserData = async() => {
         try{
-            const response = await fetch(`http://localhost:8080/api/admin/users/${params.id}`,{
+            const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/users/${params.id}`,{
                 method : "GET",
                 headers : {
                     Authorization : authorizationToken,
@@ -58,7 +58,7 @@ const AdminUpdate = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch(`http://localhost:8080/api/admin/users/update/${params.id}`,{
+            const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/users/update/${params.id}`,{
                 method : "PATCH",
                 headers : {
                     "Content-Type" : "application/json",

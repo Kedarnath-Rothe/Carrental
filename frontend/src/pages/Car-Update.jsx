@@ -17,7 +17,7 @@ const CarUpdate = () => {
 
     const getSingleCarData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/admin/cars/${params.id}`, {
+            const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/cars/${params.id}`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken,
@@ -47,7 +47,7 @@ const CarUpdate = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8080/api/admin/cars/update/${params.id}`, {
+            const response = await fetch(`https://carrental-khaki.vercel.app/api/admin/cars/update/${params.id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

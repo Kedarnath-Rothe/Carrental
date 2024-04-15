@@ -9,7 +9,7 @@ const EmailVerify = () => {
     useEffect(() => {
         const verifyEmailUrl = async () => {
             try {
-                const url = `http://localhost:8080/api/auth/${id}/verify/${token}`;
+                const url = `https://carrental-khaki.vercel.app/api/auth/${id}/verify/${token}`;
                 const response = await fetch(url);
 
                 if (!response.ok) {
