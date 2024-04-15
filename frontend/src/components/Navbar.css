@@ -1,0 +1,114 @@
+/* Navbar.css */
+
+header {
+    box-shadow: 0px 4px 5px -5px rgba(193, 186, 186, 0.5);
+}
+
+.container {
+    max-width: 140rem;
+    padding: 4.2rem 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    gap: 3.1rem;
+}
+
+.navlink {
+    font-size: 2.2rem;
+}
+
+.l {
+    font-size: 3.9rem;
+    /* font-family: 'Protest Riot', sans-serif; */
+    font-family: "Rubik Vinyl", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Hamburger Menu Icon */
+.menu-toggle {
+    display: none;
+    /* Hide menu toggle by default */
+    cursor: pointer;
+    position: relative;
+    /* Added position relative */
+    z-index: 2;
+    /* Ensure hamburger is above the nav */
+}
+
+/* Add transition for smooth animation */
+.navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: fixed;
+    top: 18;
+    /* Position at the top */
+    right: 0;
+    /* Position at the right */
+    width: 50%;
+    height: 50rem;
+    /* Full height of the viewport */
+    background-color: rgb(22, 21, 21);
+    box-shadow: 0 0 30px rgba(47, 0, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+    /* Ensure nav is below hamburger */
+}
+
+.navbar ul li {
+    padding: 1rem 2rem;
+    /* Added padding for better touchability */
+}
+
+.navbar.show ul {
+    transform: translateX(100%);
+    /* Move nav off-screen initially */
+}
+
+@media only screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        font-size: 2.5rem;
+        margin-left: 6rem;
+    }
+
+    .navbar ul {
+        transform: translateX(100%);
+    }
+
+    .navbar.show ul {
+        transform: translateX(0);
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+        /* Hide menu toggle on larger screens */
+    }
+
+    .navbar ul {
+        display: flex;
+        /* Ensure navbar ul is visible on larger screens */
+        position: static;
+        /* Reset position on larger screens */
+        width: auto;
+        /* Reset width on larger screens */
+        height: auto;
+        /* Reset height on larger screens */
+        background-color: transparent;
+        /* Reset background color on larger screens */
+        box-shadow: none;
+        /* Reset box shadow on larger screens */
+        transform: none;
+        /* Reset transform on larger screens */
+        flex-direction: row;
+        /* Ensure horizontal layout on larger screens */
+    }
+}
