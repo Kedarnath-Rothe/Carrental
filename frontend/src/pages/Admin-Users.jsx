@@ -81,7 +81,7 @@ const AdminUsers = () => {
                 value={searchQuery}
                 className="search"
                 onChange={(e) => setSearchQuery(e.target.value)}
-              /> 
+              />
               <p>Total Users: {filteredUsers.length - 1}</p>
             </div>
           </center>
@@ -94,6 +94,7 @@ const AdminUsers = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Status</th>
                 <th>Car Provider</th>
                 <th>Update</th>
                 <th>Delete</th>
@@ -106,8 +107,14 @@ const AdminUsers = () => {
                     <td>{curUser.username}</td>
                     <td>{curUser.email}</td>
                     <td>{curUser.phone}</td>
+                    <td style={{
+                      color: curUser.verified ? 'white' : 'red',
+                      fontWeight: '1500'
+                    }}>
+                      {curUser.verified ? 'Verified' : 'Un-Verified'}
+                    </td>
                     <td>{curUser.car_provider ? 'Yes' : 'No'}</td>
-                    <td className="edit"><button><Link className="edit" style={{color:"white"}} to={`/admin/user/${curUser._id}/edit`}>Edit</Link></button></td>
+                    <td className="edit"><button><Link className="edit" style={{ color: "white" }} to={`/admin/user/${curUser._id}/edit`}>Edit</Link></button></td>
                     <td className="delete"><button onClick={() => deleteUser(curUser._id)}>Delete</button></td>
                   </tr>
                 )
