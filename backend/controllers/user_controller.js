@@ -185,7 +185,7 @@ const resetPassword = async(req, res) => {
 
 
         // Send password reset email
-        const resetLink = `http://localhost:5173/reset/${user._id}/${token.token}`;
+        const resetLink = `https://rentmycar-kappa.vercel.app/reset/${user._id}/${token.token}`;
         await sendEmail(email, "Password Reset Request", resetLink);
 
         res.status(200).json({ message: 'Password reset email sent successfully.' });
