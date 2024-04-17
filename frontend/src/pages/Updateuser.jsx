@@ -118,6 +118,7 @@ const AdminUpdate = () => {
                                     value={data.email}
                                     onChange={handleInput}
                                     required
+                                    readOnly 
                                 />
                             </div>
 

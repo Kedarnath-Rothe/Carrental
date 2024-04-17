@@ -7,6 +7,8 @@ import { useAuth } from "../store/auth";
 const Login = () => {
 
     const [loading, setLoading] = useState(false);
+    const [showForgotPassword, setShowForgotPassword] = useState(false);
+    const [forgotEmail, setForgotEmail] = useState("");
 
     const [user, setUser] = useState({
         email: "",
@@ -70,6 +72,38 @@ const Login = () => {
         }
     }
 
+    const handleForgotPassword = (e) => {
+        e.preventDefault();
+        setShowForgotPassword(true);
+    };
+
+    const handleResetPassword = async (e) => {
+        e.preventDefault();
+
+        try {
+            setLoading(true);
+            const response = await fetch("https://carrental-khaki.vercel.app/api/auth/reset-password", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: forgotEmail }),
+            });
+
+            const res_data = await response.json();
+
+            if (response.ok) {
+                toast.success("Password reset email sent successfully.");
+            } else {
+                toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return <>
         <section>
             <main>
@@ -118,6 +152,9 @@ const Login = () => {
                                 <button type="submit" className="btn btn-submit" >
                                     Login
                                 </button>
+                                <a style={{color:"red"}} onClick={handleForgotPassword} className="btn btn-link">
+                                    Forgot Password?
+                                </a>
                             </form>
                             {
                                 loading && (<DNA
@@ -130,6 +167,28 @@ const Login = () => {
                                 />)
 
                             }
+
+                            {showForgotPassword && (
+                                <form onSubmit={handleResetPassword}>
+                                    <div>
+                                        <label htmlFor="forgotEmail">Email</label>
+                                        <input
+                                            type="email"
+                                            name="forgotEmail"
+                                            placeholder="Enter your email"
+                                            id="forgotEmail"
+                                            required
+                                            autoComplete="off"
+                                            value={forgotEmail}
+                                            onChange={(e) => setForgotEmail(e.target.value)}
+                                        />
+                                    </div>
+                                    <button type="submit" className="btn btn-submit">
+                                        Reset Password
+                                    </button>
+                                </form>
+                            )}
+
                         </div>
                     </div>
                 </div>

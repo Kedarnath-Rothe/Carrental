@@ -31,6 +31,10 @@ router.route('/register').post(upload.single('image'), validate(signupSchema), C
 
 router.get("/:id/verify/:token/", Controller.verify); 
 
+router.post("/reset-password", Controller.resetPassword);    //send reset mail
+
+router.post("/resetPass/:id/:token", Controller.updatePassword); 
+
 router.route('/login').post(validate(loginSchema), Controller.login)
 
 router.route('/user').get( authMiddleware, Controller.user);

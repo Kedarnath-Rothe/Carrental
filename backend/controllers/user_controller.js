@@ -135,7 +135,7 @@ const login = async (req, res) => {
                     token: crypto.randomBytes(32).toString("hex"),
                 }).save();
 
-                const verificationUrl = `http://localhost:5173/${userExist.id}/verify/${token.token}`;
+                const verificationUrl = `https://rentmycar-kappa.vercel.app/${userExist.id}/verify/${token.token}`;
                 await sendEmail(userExist.email, "Verify Email", verificationUrl);
                 console.log("ha");
                 return res.status(400).json({
@@ -162,6 +162,78 @@ const login = async (req, res) => {
     }
     catch (error) {
         res.status(500).json("internal server error")
+    }
+}
+
+// ?Reset
+const resetPassword = async(req, res) => {
+    const { email } = req.body;
+
+    try {
+        // Find user by email in MongoDB
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        // Generate reset token
+        token = await new Token({
+            userId: user._id,
+            token: crypto.randomBytes(32).toString("hex"),
+        }).save();
+
+
+        // Send password reset email
+        const resetLink = `http://localhost:5173/reset/${user._id}/${token.token}`;
+        await sendEmail(email, "Password Reset Request", resetLink);
+
+        res.status(200).json({ message: 'Password reset email sent successfully.' });
+    } catch (error) {
+        console.error('Error sending password reset email:', error);
+        res.status(500).json({ message: 'Failed to send password reset email.' });
+    }
+}
+
+
+// Update Password
+const updatePassword = async (req, res) => {
+
+    console.log("hii");
+    const { id, token } = req.params;
+    const { password } = req.body;
+
+    try {
+        // Find user by ID
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        const token = await Token.findOne({
+			userId: user._id,
+			token: req.params.token,
+		});
+        
+		if (!token) return res.status(400).send({ message: "Invalid link" }); 
+        
+		const deletedToken = await Token.deleteOne({ _id: token._id });
+
+        //Hash the password
+        const saltRound = 10;
+        // Update user's password (assuming you have a method to hash passwords)
+        user.password = await bcrypt.hash(password, saltRound); // Update password logic
+        
+        // const hash_password = await bcrypt.hash(password, saltRound);
+ 
+
+        await user.save();
+
+        res.status(200).json({ message: 'Password reset successful.' });
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        res.status(500).json({ message: 'Failed to reset password.' });
     }
 }
 
@@ -276,6 +348,8 @@ module.exports = {
     home,
     register,
     verify,
+    resetPassword,
+    updatePassword,
     login,
     user,
     getCars,

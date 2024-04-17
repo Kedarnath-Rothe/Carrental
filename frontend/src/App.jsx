@@ -25,6 +25,7 @@ import CarUpdate from './pages/Car-Update';
 import Cardetail from './pages/Cardetail';
 import EmailVerify from './pages/EmailVerify';
 import Managecar from './pages/Managecar';
+import PasswordResetPage from './pages/PasswordResetPage';
 import Updateuser from './pages/Updateuser';
 import User_history from './pages/User_history';
 
@@ -41,6 +42,7 @@ const App = () => {
         <Route path='/service' element={<Service/>} />
         <Route path='/register' element={<Register/>} />
         <Route path="/:id/verify/:token" element={<EmailVerify/>} />
+        <Route path="/reset/:id/:token" element={<PasswordResetPage/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/logout' element={<Logout/>} /> 
         <Route path='/addcar' element={<Addcar/>} /> 

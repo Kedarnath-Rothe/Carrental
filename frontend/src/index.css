@@ -553,6 +553,16 @@ a:active {
 }
 
 
+/* reset-pass-section */
+.reset-pass-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 5rem;
+  min-height: 80vh;
+}
+
 
 
 /** -----------------------
