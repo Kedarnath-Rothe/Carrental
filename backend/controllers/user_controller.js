@@ -33,7 +33,7 @@ const register = async (req, res) => {
         const { username, email, phone, password } = req.body;
 
         const imageUrl = req.headers['x-additional-info'];
-        if (imageUrl == undefined) {
+        if (imageUrl == 'undefined') {
             imageUrl = '/userimages/user.png'; // Default image URL
         }
         console.log(imageUrl);
