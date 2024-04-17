@@ -152,7 +152,7 @@ const Login = () => {
                                 <button type="submit" className="btn btn-submit" >
                                     Login
                                 </button>
-                                <a style={{color:"red"}} onClick={handleForgotPassword} className="btn btn-link">
+                                <a style={{color:"red",cursor: 'pointer'}} onClick={handleForgotPassword} className="btn btn-link">
                                     Forgot Password?
                                 </a>
                             </form>
