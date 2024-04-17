@@ -14,6 +14,7 @@ const PasswordResetPage = () => {
 
         if (password !== confirmPassword) {
             setMessage('Passwords do not match.');
+            toast.error('Passwords do not match.');
             return;
         }
 
