@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from "react";
+import { Helmet } from 'react-helmet';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 
@@ -16,7 +17,7 @@ const Register = () => {
         password: "",
     })
 
- 
+
     const handleInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -95,7 +96,7 @@ const Register = () => {
                     password: "",
                     image: null, // Reset the image field after submission
                 });
-                console.log(responseData); 
+                console.log(responseData);
             }
             else {
                 toast.error(responseData.extraDetails ? responseData.extraDetails : responseData.message);
@@ -108,6 +109,10 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Register - Car Rental System</title>
+                <meta name="description" content="Create a new account to start renting cars with us." />
+            </Helmet>
             <section>
                 <main>
                     <div className="section-registration">
@@ -117,7 +122,7 @@ const Register = () => {
                             </div>
 
                             {/* Tackle registration form */}
-                            <div className="registration-form" style={{minHeight:"70vh"}}>
+                            <div className="registration-form" style={{ minHeight: "70vh" }}>
                                 <h1 className="main-heading mb-3"> Registration Form </h1>
 
                                 <div className="form">
@@ -191,9 +196,9 @@ const Register = () => {
                                                 onChange={handleInput}
                                             />
                                         </div>
-                                        <br/>
+                                        <br />
 
-                                        {msg && <p style={{color:"green", fontWeight:"bold"}}>{msg}</p>}
+                                        {msg && <p style={{ color: "green", fontWeight: "bold" }}>{msg}</p>}
 
                                         <button type="submit" className="btn btn-submit">
                                             Register Now

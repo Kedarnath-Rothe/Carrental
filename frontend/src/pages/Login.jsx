@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { DNA } from "react-loader-spinner";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -105,10 +106,14 @@ const Login = () => {
     };
 
     return <>
+        <Helmet>
+            <title>Login - Car Rental System</title>
+            <meta name="description" content="Login to access your account and manage car rentals." />
+        </Helmet>
         <section>
             <main>
                 <div className="section-registration">
-                    <div className="container grid grid-two-cols" style={{minHeight:"90vh"}}>
+                    <div className="container grid grid-two-cols" style={{ minHeight: "90vh" }}>
                         <div className="registration-image">
                             <img src="/images/register.png" width="500" height="500" alt="Login image" />
                         </div>
@@ -152,7 +157,7 @@ const Login = () => {
                                 <button type="submit" className="btn btn-submit" >
                                     Login
                                 </button>
-                                <a style={{color:"red",cursor: 'pointer'}} onClick={handleForgotPassword} className="btn btn-link">
+                                <a style={{ color: "red", cursor: 'pointer' }} onClick={handleForgotPassword} className="btn btn-link">
                                     Forgot Password?
                                 </a>
                             </form>

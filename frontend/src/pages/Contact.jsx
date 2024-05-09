@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from "react";
+import { Helmet } from 'react-helmet';
 import { Comment } from 'react-loader-spinner';
 import { toast } from "react-toastify";
 import { useAuth } from "../store/auth";
@@ -109,6 +110,10 @@ const Contact = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Contact Us - Car Rental System</title>
+                <meta name="description" content="Contact us for inquiries about our car rental services." />
+            </Helmet>
             <section className="section-contact">
                 <br />
 
