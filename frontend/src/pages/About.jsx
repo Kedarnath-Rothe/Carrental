@@ -18,7 +18,7 @@ const Home = () => {
                         <div className="content">
 
                             <h2 className="about_heading" >About Our Comapany...</h2> <br />
-                            <p>Welcome to Your Car Rental System Name, where we redefine your travel experience with top-quality and reliable car rentals. Our mission is to provide you with a diverse fleet of vehicles, exceptional service, and a seamless booking process.</p>
+                            {/* <p>Welcome to Your Car Rental System Name, where we redefine your travel experience with top-quality and reliable car rentals. Our mission is to provide you with a diverse fleet of vehicles, exceptional service, and a seamless booking process.</p> */}
                             <br/>
                             <h2>Why Choose Us?</h2> 
                             <br/>
